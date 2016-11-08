@@ -270,6 +270,7 @@ function openFileFromDrive(){
 		var req= new XMLHttpRequest();
 		req.open("pacth", "https://www.googleapis.com/upload/drive/v3/files/"+fileId);
 		req.setRequestHeader("Authorization", "Bearer "+accessToken);
+		req.setRequestHeader("Access-Control-Allow-Origin", "http://handoutdoc.org");		
 		req.setRequestHeader("Content-Type", "multipart/mixed; boundary=\"" + boundary + "\"");
 		req.onload= callback;
 		req.send(multipartRequestBody);
