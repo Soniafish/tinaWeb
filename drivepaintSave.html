@@ -268,7 +268,7 @@ function openFileFromDrive(){
 
 		// 利用 Google Drive API 將檔案上傳至 Drive 伺服器
 		var req= new XMLHttpRequest();
-		req.open("post", "https://www.googleapis.com/upload/drive/v3/files/"+fileId);
+		req.open("patch", "https://www.googleapis.com/upload/drive/v3/files/"+fileId);
 		req.setRequestHeader("Authorization", "Bearer "+accessToken);
 		req.setRequestHeader("Access-Control-Allow-Origin", "http://handoutdoc.org");		
 		req.setRequestHeader("Content-Type", "multipart/mixed; boundary=\"" + boundary + "\"");
