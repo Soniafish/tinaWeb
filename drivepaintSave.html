@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
 <title>Canvas</title>
 <script type="text/javascript">
@@ -105,6 +105,7 @@ var CLIENT_ID="8697117080-nauok37nvtqt4k5h8up1eud9ghpmc4ad.apps.googleuserconten
 var API_KEY="AIzaSyCt-9PGDZkbEVELdXZhGhs1QfLHQKqUYDk";
 var SCOPES=["https://www.googleapis.com/auth/drive"];
 var accessToken=null;
+var fileId="";
 function initGoogle(){
 	gapi.load("picker");
 	// 偵測使用者的授權狀態
@@ -148,6 +149,7 @@ function openFileFromDrive(){
 		if(data[google.picker.Response.ACTION]==google.picker.Action.PICKED){
 			var doc=data[google.picker.Response.DOCUMENTS][0];
 			downloadFile(doc.id);
+			fileId=doc.id;
 		}
 	}
 	function downloadFile(fileId) {
@@ -228,6 +230,59 @@ function openFileFromDrive(){
 		// 	"body": multipartRequestBody});
 		// request.execute(callback);
 	}
+
+	function overwriteFileToDrive(){
+		updataFile(fileId, function () {
+			alert("overwrite");
+	}
+	
+		// 利用 Multipart 格式上傳檔案，檔案內容需使用 base64 編碼處理
+	function updateFile(fileId, callback){
+		// 準備 Multipart 格式的細節
+		var boundary="-------314159265358979323846";//前面的間隔線
+		var delimiter="\r\n--"+boundary+"\r\n";//準備間隔線
+		var close_delim="\r\n--"+boundary+"--";//結束間隔線
+
+		// 準備一些自訂的檔案資訊
+		var contentType="image/jpeg";//也可改用png一類的圖檔類型
+		var metadata={
+			"name":filename,
+			"mimeType":contentType
+		};
+
+		// 準備要上傳的圖檔資料，編碼成 base64 字串
+		var base64Data=cvs.toDataURL("image/jpeg").replace("data:image/jpeg;base64,", "");//toDataURL為固定方法
+		
+		// 組織出正確的 Multipart 格式
+		var multipartRequestBody=
+			delimiter +
+			"Content-Type: application/json\r\n\r\n" +
+			JSON.stringify(metadata) +
+			delimiter +
+			"Content-Type: " + contentType + "\r\n" +
+			"Content-Transfer-Encoding: base64\r\n" +
+			"\r\n" +
+			base64Data +
+			close_delim;
+
+		// 利用 Google Drive API 將檔案上傳至 Drive 伺服器
+		var req= new XMLHttpRequest();
+		req.open("pacth", "https://www.googleapis.com/upload/drive/v3/files/"+fileId);
+		req.setRequestHeader("Authorization", "Bearer "+accessToken);
+		req.setRequestHeader("Content-Type", "multipart/mixed; boundary=\"" + boundary + "\"");
+		req.onload= callback;
+		req.send(multipartRequestBody);
+		// var request=gapi.client.request({
+		// 	"path": "/upload/drive/v3/files",
+		// 	"method": "POST",
+		// 	"params": {"uploadType": "multipart"},
+		// 	"headers": {
+		// 	  "Content-Type": "multipart/mixed; boundary=\"" + boundary + "\""
+		// 	},
+		// 	"body": multipartRequestBody});
+		// request.execute(callback);
+	}
+
 </script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=initGoogle"></script>
