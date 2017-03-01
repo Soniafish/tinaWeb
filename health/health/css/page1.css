@@ -1,0 +1,285 @@
+.background{
+			font-family: 微軟正黑體; 
+			background-image:   			
+            	url(https://mdn.mozillademos.org/files/11307/bubbles.png),
+            	linear-gradient(to bottom, rgba(30, 75, 115, 1),  rgba(255, 255, 255, 0));
+			background-repeat:
+            	no-repeat,
+            	no-repeat;
+			background-position:
+            	left,
+            	top left; 
+		}
+		.title{
+			color: #F0F0F0;
+			font-size:50px;  
+			font-weight: bolder;
+			text-shadow: 5px 5px 10px #AAAAFF;
+			text-align:center;
+			padding: 10px;
+			/*margin:10px auto;  !important*/
+		}
+		.line{
+			width: 80%;
+			margin-left: auto;
+			margin-right: auto;
+			border-style: solid;
+			border-width: 2px;
+			border-color: 	#ECECFF;
+			border-radius: 5px;
+		}
+		.menu{
+			color: #B9B9FF;
+			font-size:25px;
+			text-align:center;
+			margin:15px; 
+		}
+		.content1{
+			width: 80%; 
+			margin-left: 90px; 
+			padding: 15px;
+		}
+		.content2{
+			/*background-color:#FFEE99; */
+			background-color:#ECECFF;
+			border-top-left-radius:50px;
+			border-bottom-right-radius:50px; 
+			border-style: solid;
+			border-width: 2px;
+			border-color: #BEBEBE;
+			display:none; 
+			width: 80%; 
+			margin-left: 90px; 
+			padding: 15px; 
+		}
+		.container{
+			width:80%; 
+			margin:15px auto;
+			text-align: center;
+		}
+		img{
+			width: 100%; 
+			margin-left: auto; 
+			margin-right: auto;
+			margin: 5px;
+		}
+		.back{
+			text-align: center;
+		}
+		.back:hover{
+			font-weight: bold;
+		}
+		.quote{
+			text-align: right;
+			 font-size: 8px;
+		}
+		#tv:hover{
+			border-style: solid;
+			border-radius: 5px;
+			border-color: #B9B9FF;
+			border-radius: 5px;
+			/*color: #003D79; */
+			padding: 5px;
+			font-weight: bold;
+		}
+		#management1:hover{
+			border-style: solid;
+			border-radius: 5px;
+			border-color: #B9B9FF;
+			border-radius: 5px;
+			/*color: #003D79; !important*/
+			padding: 5px;
+			font-weight: bold;
+		}
+		#hot1:hover{
+			border-style: solid;
+			border-radius: 5px;
+			border-color: #B9B9FF;
+			border-radius: 5px;
+			/*color: #003D79; */
+			padding: 5px;
+			font-weight: bold;
+		}
+		#news1:hover{
+			border-style: solid;
+			border-radius: 5px;
+			border-color: #B9B9FF;
+			/*color: #003D79; */
+			padding: 5px;
+			font-weight: bold;
+		}
+		#topic1:hover{
+			border-style: solid;
+			border-radius: 5px;
+			border-color: #B9B9FF;
+			border-radius: 5px;
+			/*color: #003D79; */
+			padding: 5px;
+			font-weight: bold;
+		}
+		/*TV*/
+		.square{
+			margin: 10px auto;
+			position: relative;
+		}
+		.tvTop{
+			width: 700px;
+			height: 40px;
+			background-color: #dddddd;
+			transform:translate(20px, 0px) skew(-45deg, 0deg);
+			text-align: center;
+			font-size: 30px;
+			line-height: 60px;
+			letter-spacing: 0.5em;
+			/*border-radius: 10px;  */
+		}
+		.tvCenter{
+			width: 700px;
+			height: 400px;
+			background-color: #aaaaaa;
+			float: left;
+			/*display: inline-block;*/
+			vertical-align: top;
+			/*border-radius: 10px;*/
+		}
+		.tvRight{
+			width: 40px;
+			height: 400px;
+			background-color: #777777;
+			float: left;
+			/*display: inline-block;*/
+			vertical-align: top;
+			transform:translate(0px, -20px) skew(0deg, -45deg);
+			/*border-radius: 10px;*/
+		}
+		.tvScreen{
+			position:relative;
+			width:550px;
+			height:300px;
+			margin-top:20px;
+			margin-left:auto;
+			margin-right:auto;
+			background-color: black;
+		}
+		.tvBtn{
+			width: 80px;
+			height: 40px;
+			background-color: black;
+			border-radius: 10px;
+			position: absolute;
+			
+			color: white;
+			text-align: center;
+			line-height: 30px;
+			box-shadow: 2px 2px 2px gray;
+		}
+		video{
+			width:550px;
+			height:300px;
+		}
+		#taiwanBarBton{
+			position: absolute;
+			top:380px;
+			left: 100px;
+		}
+		#tgopBton{
+			position: absolute;
+			top:380px;
+			left: 200px;
+		}
+		#jokeBton{
+			position: absolute;
+			top:380px;
+			left: 300px;
+		}
+		#playBton{
+			position: absolute;
+			top:380px;
+			left: 480px;
+			width: 40px;
+			margin: 0px;
+		}
+		#pauseBton{
+			position: absolute;
+			top:380px;
+			left: 550px;
+			width: 40px;
+			margin: 0px;
+		}
+		#WorkOut{
+			display: none;
+		}
+		#FIGUREROBICS{
+			display: none;
+		}
+		#yoga{
+			display: none;
+		}
+		
+		/*bmi*/
+		.bmiItem{
+			display: inline-block;
+			width: 120px;
+			border-bottom-style: solid;
+			border-width: 2px;
+			border-color: black;
+		}
+		.inputItem{
+			padding:5px; 
+			background:#F0F0F0; 
+			border:0 none;
+			cursor:pointer;
+			width: 120px;
+			margin: 10px;
+		}
+		/*google chart*/
+		#chart_div{
+			margin: 10px auto;
+			width: 100%; 
+			height: 400px; 
+			clear:both;
+		}
+
+		/*hot2*/
+		.hot2Table{
+			margin: 10px;
+			/*align:center;*/
+			border-collapse:collapse;
+			border-color: gray;
+			border-style: solid;
+			border-width: 1px;
+			/*cellspacing:3px; */
+		}
+
+		.hot2Table tr{
+			border-collapse:collapse;
+			border-color: white;
+			border-style: solid;
+			border-width: 1px;
+			background-color: #ECF5FF;
+		}
+
+		.hot2Table tr td{
+			padding: 5px 10px;
+		}
+
+		.hot2Table tr:first-child{
+			background-color: #B9B9FF;
+		}
+		.note{
+			font-weight: bold;
+		}
+
+		/*news2*/
+		#news2 .container div{
+			text-align: justify;
+			text-indent:2em;
+			margin: 5px;
+		}
+
+		/*topic2*/
+		#topic2 .container div{
+			text-align: justify;
+			text-indent:2em;
+			margin: 5px;
+		}
