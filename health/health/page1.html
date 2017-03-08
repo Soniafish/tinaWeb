@@ -1,198 +1,226 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Sonia的健康空間</title>
-	<meta charset="utf-8"/>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>Sonia的健康空間</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="css/basic.css">
+    <link rel="stylesheet" href="css/basic.css">
     <link rel="stylesheet" href="css/page1.css">
     <script type="text/javascript" src="js/page1.js"></script>
 </head>
+
 <body>
-	<div class="background">
-	<!-- 標題 -->
-		<h2 class="title">Sonia的健康空間</h2>
-		<div class="line"></div>
-	<!--選單  -->
-		<div class="menu">
-			<span id="tv" onclick="changeToTv();" style="margin-right:20px;">運動頻道</span>
-			<span id="management1" onclick="changeTomanagement();" style="margin-right:20px;">自我管理</span>
-			<span id="hot1" onclick="changeToHot();" style="margin-right:20px;">減重食譜</span>
-			<span id="news1" onclick="changeToNews();" style="margin-right:20px;">專題一</span>
-			<span id="topic1" onclick="changeToTopic();" style="margin-right:20px;">專題二</span>
-		</div>
-	<!-- 內容 -->
-	<!-- 熱門影片 -->
-		<div id="content" class="content1">
-			<!-- <h1 style="text-align: center; ">運動頻道</h1> -->
-			<div class="square">
-				<div class="tvTop"></div>
-				<div class="tvCenter">
-					<div class="tvScreen">
-						<video id="WorkOut7m" src="video/WorkOut7m.mp4"></video>
-						<video id="FIGUREROBICS" src="video/FIGUREROBICS.mp4"></video>
-						<video id="yoga" src="video/yoga.mp4"></video>
-					</div>
-					<button class="tvBtn" id="taiwanBarBton" onclick="showWorkOut7m();">7分鐘</button>
-					<button class="tvBtn" id="tgopBton" onclick="showFIGUREROBICS();">鄭多燕</button>
-					<button class="tvBtn" id="jokeBton" onclick="showYoga();">瑜珈</button>
-					<img class="imgBtn" id="playBton" onclick="video.play();" src="images/playIcon.png">
-					<img class="imgBtn" id="pauseBton" onclick="video.pause();" src="images/pauseIcon.png">
-				</div>
-				<div class="tvRight"></div>
-			</div>
-		</div>
-	<!-- 自我管理 -->
-		<div id="management2" class="content2">
-		<!-- BMI -->
-			<div class="container" >
-				<h1>BMI檢測</h1>
-				<table style="text-align: center;">
-					<tr>
-						<td>身高(cm):<input class="inputItem" id="bmiHeight" type="text" placeholder="輸入身高(cm)"></td>
-						<td>體重(kg):<input class="inputItem" id="bmiWeight" type="text" placeholder="輸入體重(kg)"></td>
-						<td><button onclick="getBmi();">sent</button>  <div class="bmiItem" id="bmi"></div></td>
-					</tr>
-				</table>
-			</div>
-		<!-- google chart -->
-			<div class="container">
-				<h1>單月健走紀錄</h1>
-			
-				<!--表單接收 -->
-				<table style="text-align: center;">
-					<tr>
-						<td>
-							日期:<input class="inputItem" type="text" id="day" placeholder="輸入健走日(1-31)">
-						</td>
-						<td>
-							步數:<input class="inputItem" type="text" id="step" placeholder="輸入健走步數">
-						</td>
-						<td>
-							<button onclick="addData();">Sent</button>
-						</td>
-					</tr>
-				</table>		    	
-		  	 	<div id="chart_div"></div>
-		    <!--1. 後端 api:在form標籤加入 action="step.txt" method="POST" -->
-			</div>
-		</div>
-	<!--減重食譜  -->
-		<div id="hot2" class="content2">
-			<div class="container">
-				<h1>榮總三日減肥餐</h1>
-				<table class="hot2Table">
-					<tr style="font-size: 20px; font-weight: bold;">
-						<td></td>
-						<td>第一天</td>
-						<td>第二天</td>
-						<td>第三天</td>
-					</tr>
-					<tr style="font-size: 16px;  ">
-						<td style="font-weight: bold; padding: 10px;">早餐</td>
-						<td>黑咖啡or茶<br>
-							烤土司一片<br>
-							花生醬二匙<br>
-							葡萄柚半個(212g)<br>
-						</td>
-						<td>黑咖啡or茶<br>
-							烤土司一片<br>
-							蛋一個<br>
-							香蕉半根(75g)<br>
-						</td>
-						<td>黑咖啡or茶<br>
-							鹹餅乾一片<br>
-							低起士一片<br>
-							蘋果一個(155g)<br>
-						</td>
-					</tr>
-					<tr>
-						<td style="font-weight: bold; padding: 10px; ">中餐</td>
-						<td>黑咖啡or茶<br>
-							烤土司一片<br>
-							鮪魚罐頭半罐(120ml)<br>
-						</td>
-						<td>黑咖啡or茶<br>
-							鹹餅乾二片<br>
-							優格一杯(240ml)<br>
-						</td>
-						<td>黑咖啡or茶<br>
-							烤土司一片<br>
-							蛋一個<br>
-						</td>
-					</tr>
-					<tr>
-						<td style="font-weight: bold; padding: 10px; ">晚餐</td>
-						<td>黑咖啡or茶<br>
-							肉片二片(70g)<br>
-							香草冰淇淋一杯(240g)<br>
-							四季豆一杯(240g)<br>
-							紅葡萄一杯(240g)<br>
-							蘋果一個(155g)<br>
-						</td>
-						<td>黑咖啡or茶<br>
-							熱狗二條(100g)<br>
-							香草冰淇淋半杯(120g)<br>
-							綠花椰菜一杯(240g)<br>
-							紅葡萄半杯(120g)<br>
-							香蕉半根(75g)<br>
-						</td>
-						<td>黑咖啡or茶<br>
-							鮪魚罐頭一罐(240g)<br>
-							香草冰淇淋半杯(120g)<br>
-							白花椰菜一杯(240g)<br>
-							哈蜜瓜一個(135g)<br>
-							紅葡萄一杯(240g)<br>
-							香蕉半根(75g)<br>
-						</td>
-					</tr>
-				</table>
-				<p></p>
-				<div class="note">
-					此配方有化學作用，不可任意更改除鹽和胡椒之外不可用別的佐料<br>
-					菜單上有須烹熟的食物一律用水煮，不可用油煎炸<br>
-					第一次連續三天節食，可減十磅，三天後可照常飲食，但不可過份<br>四天正常飲食後，想要再減胖時，可再來三天節食，但一定要相隔四天<br>
-				</div>
-			</div>
-		</div>
-			
-	<!-- 專題一 -->
-		<div id="news2" class="content2">
-			<div class="container">
-				<h1>運動後聰明吃，加速減重!!</h1>
-				<img src="http://cw1.tw/CH/images/channel_master/2b49b06b-a71c-4810-825a-fbfbdca6933e.jpg">
-				<div>
-					<p>運動完不必挨餓，把握黃金一小時補充輕食，體力迅速回復又不怕胖。</p>
-					<p>運動結束後擦擦汗，你是為了讓減肥效果更好，只好忍著飢餓感猛灌水？還是犒賞自己的辛勞，大快朵頤？其實，你可能已經浪費了一天當中身體吸收養分最完整、迅速的黃金時間。不管你是要減重、增肌或是為了健康，運動後的30分鐘到1小時內，聰明攝取一份營養均衡的輕食，讓身體能量迅速恢復，最後都會讓你的目標效果加倍。早在12年前，美國運動醫學學會與美國膳食協會就曾公開肯定「運動後營養補充」的重要性。尤其在中高強度的有氧運動後，你的身體非常需要恢復精力與修補肌肉的來源。簡單來說，這時候你需要一點卡路里的進帳。就像車子沒油了需要補充，才能走更遠的路。</p>
-					<p>台北醫學大學保健營養系教授劉珍芳解釋，運動時肌肉裡的肝醣大量被消耗，肝臟中的肝醣也被用來維持血糖平衡，因此，運動後補充一份均衡營養的輕食很重要，內容以碳水化合物與蛋白質的搭配最為理想，碳水化合物可恢復維持體力的肝醣，蛋白質者則能修補因運動受到破壞的肌肉組織。如果運動後都沒有吃，就會像禁食，第二天你可能會非常疲倦，精神無法集中，肌肉痠痛也不易恢復。運動強度愈大，不舒服的感覺愈明顯。心跳率130～140之間的中高強度運動例如跑步、爬山，運動後更應立即補充營養。掌握黃金時間。</p>
-					<p>許多人擔心運動後身體的吸收力變強，吃東西很容易變胖。甚至有人會認為辛苦運動燃燒掉的卡路里，會因為補回來的飲食而前功盡棄。身體的吸收力變強是事實，但是容易變胖的結論並不正確。</p> 
-				</div>
-				<p class="quote">摘錄自康健雜誌<p>
-			</div>
-	 	</div>
- 	<!-- 專題二 -->
-		<div id="topic2" class="content2">
-			<div class="container">
-				<h1>斷糖飲食法，最快3天就有感！！</h1>
-				<img src="http://www.niusnews.com/upload/activities/activities3_1769_1445238691.jpg">
-				<h3>盲目的少吃，體重不會減輕</h3>
-				<div>
-					<p>真正的減肥，不是減輕體重，而是減少肥胖的來源，即「體脂肪」。體脂肪降低後，體重自然會下降，這才是真正的健康瘦身，也是唯一不復胖的理想形式。如果一直誤解這點，不僅一輩子都瘦不下來，更可能踏上「代謝症候群→糖尿病→動脈硬化→心肌梗塞」的恐怖軌道，千萬不可忽視。</p>
-					<p>「減少體脂肪」才是真正的瘦身，這也是最健康且理想的減肥法。為了達成這個目的，除了「減少體內原有的體脂肪」，同時也要「避免新的體脂肪囤積體內」，並將身體打造成不易堆積脂肪、容易燃燒熱量的「易瘦體質」。做到上述三點，才是真正的健康瘦身，請各位務必牢記於心。因此，我特別為「斷糖減肥法」制定了三項原則。當你開始實行斷糖減肥法後，大約從第三天開始會感覺「咦，好像瘦了一點？」接下來，請你盡可能持續進行斷糖生活，同時仔細觀察身體的細微變化。三個月後你將發現，現在的你和過去相比簡直判若兩人，不僅身邊的人，連自己都無法置信。</p>
-				</div>
-				<h3>「斷糖減肥法」的三大原則</h3>
-				<div>
-					<p>(1)禁止攝取糖分：不僅可以斷絕體脂肪的原料來源，還能消耗體內原本囤積的體脂肪。</p>
-					<p>(2) 攝取動物性蛋白質，同時進行肌力訓練：動物性蛋白質是打造「易瘦體質」的關鍵。肌力訓練則可增加肌肉量，提高基礎代謝率，幫助脂肪燃燒。</p>
-					<p>(3) 一週進行三次有氧運動：慢跑或游泳等有氧運動，可大量燃燒體脂肪，達到加速減重的效果。</p>
-				</div>
-				<p class="quote">摘錄自美麗佳人風格時尚網雜誌<p>
-			</div>
-		</div>
-	<!-- <div style="height: 20px; "></div> -->
-	<div id="back" onclick="changeToBack();" class="back" style="margin:30px; clear:both;">< 回到首頁 ></div>
-	<!-- <div style="height:20px; "></div> -->
-	</div>
+    <div class="background">
+        <!-- 標題 -->
+        <h2 class="title">Sonia的健康空間</h2>
+        <div class="line"></div>
+        <!--選單  -->
+        <div class="menu">
+            <span id="tv" onclick="changeToTv();" style="margin-right:20px;">運動頻道</span>
+            <span id="management1" onclick="changeTomanagement();" style="margin-right:20px;">自我管理</span>
+            <span id="hot1" onclick="changeToHot();" style="margin-right:20px;">減重食譜</span>
+            <span id="news1" onclick="changeToNews();" style="margin-right:20px;">專題一</span>
+            <span id="topic1" onclick="changeToTopic();" style="margin-right:20px;">專題二</span>
+        </div>
+        <!-- 內容 -->
+        <!-- 熱門影片 -->
+        <div id="content" class="content1">
+            <!-- <h1 style="text-align: center; ">運動頻道</h1> -->
+            <div class="square">
+                <div class="tvTop"></div>
+                <div class="tvCenter">
+                    <div class="tvScreen">
+                        <video id="WorkOut7m" src="video/WorkOut7m.mp4"></video>
+                        <video id="FIGUREROBICS" src="video/FIGUREROBICS.mp4"></video>
+                        <video id="yoga" src="video/yoga.mp4"></video>
+                    </div>
+                    <button class="tvBtn" id="taiwanBarBton" onclick="showWorkOut7m();">7分鐘</button>
+                    <button class="tvBtn" id="tgopBton" onclick="showFIGUREROBICS();">鄭多燕</button>
+                    <button class="tvBtn" id="jokeBton" onclick="showYoga();">瑜珈</button>
+                    <img class="imgBtn" id="playBton" onclick="video.play();" src="images/playIcon.png">
+                    <img class="imgBtn" id="pauseBton" onclick="video.pause();" src="images/pauseIcon.png">
+                </div>
+                <div class="tvRight"></div>
+            </div>
+            <br>
+            <!--FB SDK 套件 開始-->
+            <div id="fb-root"></div>
+            <script>
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=141578039672760";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+            <!--FB SDK 套件 結束-->
+            <!--FB 按讚-->
+            <div class="fb-like" data-href="https://http://handoutdoc.org/static/tinaWeb/health/health/index.html" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+            <!--FB 留言板-->
+            <div class="fb-comments" data-href="http://handoutdoc.org/static/tinaWeb/health/health/index.html" data-width="700" data-numposts="5"></div>
+            <!--FB 留言板 結束-->
+
+        </div>
+        <!-- 自我管理 -->
+        <div id="management2" class="content2">
+            <!-- BMI -->
+            <div class="container">
+                <h1>BMI檢測</h1>
+                <table style="text-align: center;">
+                    <tr>
+                        <td>身高(cm):<input class="inputItem" id="bmiHeight" type="text" placeholder="輸入身高(cm)"></td>
+                        <td>體重(kg):<input class="inputItem" id="bmiWeight" type="text" placeholder="輸入體重(kg)"></td>
+                        <td><button onclick="getBmi();">sent</button>
+                            <div class="bmiItem" id="bmi"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- google chart -->
+            <div class="container">
+                <h1>單月健走紀錄</h1>
+
+                <!--表單接收 -->
+                <table style="text-align: center;">
+                    <tr>
+                        <td>
+                            日期:<input class="inputItem" type="text" id="day" placeholder="輸入健走日(1-31)">
+                        </td>
+                        <td>
+                            步數:<input class="inputItem" type="text" id="step" placeholder="輸入健走步數">
+                        </td>
+                        <td>
+                            <button onclick="addData();">Sent</button>
+                        </td>
+                    </tr>
+                </table>
+                <div id="chart_div"></div>
+                <!--1. 後端 api:在form標籤加入 action="step.txt" method="POST" -->
+            </div>
+        </div>
+        <!--減重食譜  -->
+        <div id="hot2" class="content2">
+            <div class="container">
+                <h1>榮總三日減肥餐</h1>
+                <table class="hot2Table">
+                    <tr style="font-size: 20px; font-weight: bold;">
+                        <td></td>
+                        <td>第一天</td>
+                        <td>第二天</td>
+                        <td>第三天</td>
+                    </tr>
+                    <tr style="font-size: 16px;  ">
+                        <td style="font-weight: bold; padding: 10px;">早餐</td>
+                        <td>黑咖啡or茶<br> 烤土司一片
+                            <br> 花生醬二匙
+                            <br> 葡萄柚半個(212g)
+                            <br>
+                        </td>
+                        <td>黑咖啡or茶<br> 烤土司一片
+                            <br> 蛋一個
+                            <br> 香蕉半根(75g)
+                            <br>
+                        </td>
+                        <td>黑咖啡or茶<br> 鹹餅乾一片
+                            <br> 低起士一片
+                            <br> 蘋果一個(155g)
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; padding: 10px; ">中餐</td>
+                        <td>黑咖啡or茶<br> 烤土司一片
+                            <br> 鮪魚罐頭半罐(120ml)
+                            <br>
+                        </td>
+                        <td>黑咖啡or茶<br> 鹹餅乾二片
+                            <br> 優格一杯(240ml)
+                            <br>
+                        </td>
+                        <td>黑咖啡or茶<br> 烤土司一片
+                            <br> 蛋一個
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold; padding: 10px; ">晚餐</td>
+                        <td>黑咖啡or茶<br> 肉片二片(70g)
+                            <br> 香草冰淇淋一杯(240g)
+                            <br> 四季豆一杯(240g)
+                            <br> 紅葡萄一杯(240g)
+                            <br> 蘋果一個(155g)
+                            <br>
+                        </td>
+                        <td>黑咖啡or茶<br> 熱狗二條(100g)
+                            <br> 香草冰淇淋半杯(120g)
+                            <br> 綠花椰菜一杯(240g)
+                            <br> 紅葡萄半杯(120g)
+                            <br> 香蕉半根(75g)
+                            <br>
+                        </td>
+                        <td>黑咖啡or茶<br> 鮪魚罐頭一罐(240g)
+                            <br> 香草冰淇淋半杯(120g)
+                            <br> 白花椰菜一杯(240g)
+                            <br> 哈蜜瓜一個(135g)
+                            <br> 紅葡萄一杯(240g)
+                            <br> 香蕉半根(75g)
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+                <p></p>
+                <div class="note">
+                    此配方有化學作用，不可任意更改除鹽和胡椒之外不可用別的佐料<br> 菜單上有須烹熟的食物一律用水煮，不可用油煎炸
+                    <br> 第一次連續三天節食，可減十磅，三天後可照常飲食，但不可過份
+                    <br>四天正常飲食後，想要再減胖時，可再來三天節食，但一定要相隔四天<br>
+                </div>
+            </div>
+        </div>
+
+        <!-- 專題一 -->
+        <div id="news2" class="content2">
+            <div class="container">
+                <h1>運動後聰明吃，加速減重!!</h1>
+                <img src="http://cw1.tw/CH/images/channel_master/2b49b06b-a71c-4810-825a-fbfbdca6933e.jpg">
+                <div>
+                    <p>運動完不必挨餓，把握黃金一小時補充輕食，體力迅速回復又不怕胖。</p>
+                    <p>運動結束後擦擦汗，你是為了讓減肥效果更好，只好忍著飢餓感猛灌水？還是犒賞自己的辛勞，大快朵頤？其實，你可能已經浪費了一天當中身體吸收養分最完整、迅速的黃金時間。不管你是要減重、增肌或是為了健康，運動後的30分鐘到1小時內，聰明攝取一份營養均衡的輕食，讓身體能量迅速恢復，最後都會讓你的目標效果加倍。早在12年前，美國運動醫學學會與美國膳食協會就曾公開肯定「運動後營養補充」的重要性。尤其在中高強度的有氧運動後，你的身體非常需要恢復精力與修補肌肉的來源。簡單來說，這時候你需要一點卡路里的進帳。就像車子沒油了需要補充，才能走更遠的路。</p>
+                    <p>台北醫學大學保健營養系教授劉珍芳解釋，運動時肌肉裡的肝醣大量被消耗，肝臟中的肝醣也被用來維持血糖平衡，因此，運動後補充一份均衡營養的輕食很重要，內容以碳水化合物與蛋白質的搭配最為理想，碳水化合物可恢復維持體力的肝醣，蛋白質者則能修補因運動受到破壞的肌肉組織。如果運動後都沒有吃，就會像禁食，第二天你可能會非常疲倦，精神無法集中，肌肉痠痛也不易恢復。運動強度愈大，不舒服的感覺愈明顯。心跳率130～140之間的中高強度運動例如跑步、爬山，運動後更應立即補充營養。掌握黃金時間。</p>
+                    <p>許多人擔心運動後身體的吸收力變強，吃東西很容易變胖。甚至有人會認為辛苦運動燃燒掉的卡路里，會因為補回來的飲食而前功盡棄。身體的吸收力變強是事實，但是容易變胖的結論並不正確。</p>
+                </div>
+                <p class="quote">摘錄自康健雜誌
+                    <p>
+            </div>
+        </div>
+        <!-- 專題二 -->
+        <div id="topic2" class="content2">
+            <div class="container">
+                <h1>斷糖飲食法，最快3天就有感！！</h1>
+                <img src="http://www.niusnews.com/upload/activities/activities3_1769_1445238691.jpg">
+                <h3>盲目的少吃，體重不會減輕</h3>
+                <div>
+                    <p>真正的減肥，不是減輕體重，而是減少肥胖的來源，即「體脂肪」。體脂肪降低後，體重自然會下降，這才是真正的健康瘦身，也是唯一不復胖的理想形式。如果一直誤解這點，不僅一輩子都瘦不下來，更可能踏上「代謝症候群→糖尿病→動脈硬化→心肌梗塞」的恐怖軌道，千萬不可忽視。</p>
+                    <p>「減少體脂肪」才是真正的瘦身，這也是最健康且理想的減肥法。為了達成這個目的，除了「減少體內原有的體脂肪」，同時也要「避免新的體脂肪囤積體內」，並將身體打造成不易堆積脂肪、容易燃燒熱量的「易瘦體質」。做到上述三點，才是真正的健康瘦身，請各位務必牢記於心。因此，我特別為「斷糖減肥法」制定了三項原則。當你開始實行斷糖減肥法後，大約從第三天開始會感覺「咦，好像瘦了一點？」接下來，請你盡可能持續進行斷糖生活，同時仔細觀察身體的細微變化。三個月後你將發現，現在的你和過去相比簡直判若兩人，不僅身邊的人，連自己都無法置信。</p>
+                </div>
+                <h3>「斷糖減肥法」的三大原則</h3>
+                <div>
+                    <p>(1)禁止攝取糖分：不僅可以斷絕體脂肪的原料來源，還能消耗體內原本囤積的體脂肪。</p>
+                    <p>(2) 攝取動物性蛋白質，同時進行肌力訓練：動物性蛋白質是打造「易瘦體質」的關鍵。肌力訓練則可增加肌肉量，提高基礎代謝率，幫助脂肪燃燒。</p>
+                    <p>(3) 一週進行三次有氧運動：慢跑或游泳等有氧運動，可大量燃燒體脂肪，達到加速減重的效果。</p>
+                </div>
+                <p class="quote">摘錄自美麗佳人風格時尚網雜誌
+                    <p>
+            </div>
+        </div>
+        <!-- <div style="height: 20px; "></div> -->
+        <div id="back" onclick="changeToBack();" class="back" style="margin:30px; clear:both;">( 回到首頁 )</div>
+        <!-- <div style="height:20px; "></div> -->
+    </div>
+
 </body>
+
 </html>
